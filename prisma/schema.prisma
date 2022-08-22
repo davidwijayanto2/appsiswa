@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model siswa {
+  idSiswa Int @id @default(autoincrement())  
+  namaSiswa String @db.VarChar(255)
+  alamat String? @db.VarChar(255)
+  jenisKelamin String? @db.VarChar(1)
+  noHP String? @db.VarChar(20)
+  photoProfile String? @db.VarChar(255)  
+  statusSiswa Int @default(1)
+  dKelasActual dKelasActual[]
+  user user[]  
+}
+
+model user {
+  userId Int @id @default(autoincrement())
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+  idSiswa Int? 
+  idGuru Int? 
+  FK_idSiswa_user siswa? @relation(fields: [idSiswa],references: [idSiswa])
+  FK_idGuru_user guru? @relation(fields: [idGuru],references: [idGuru])
+  @@index([idSiswa,idGuru])
+}
+
+model mataPelajaran {
+  idMataPelajaran Int @id @default(autoincrement())  
+  namaMataPelajaran String @db.VarChar(255)
+  statusMataPelajaran Int @default(1)
+  nilaiMatPel nilaiMatPel[]  
+}
+
+model guru {
+  idGuru Int @id @default(autoincrement())
+  namaGuru String @db.VarChar(255)
+  alamat String? @db.VarChar(255)
+  jenisKelamin String? @db.VarChar(1)
+  noHP String? @db.VarChar(20)  
+  statusGuru Int @default(1)
+  user user[]
+  hKelasActual hKelasActual[]
+}
+
+model kelas {
+  idKelas Int @id @default(autoincrement())  
+  namaKelas String @db.VarChar(5)  
+  statusKelas Int @default(1)
+  hKelasActual hKelasActual[]
+}
+
+model hKelasActual {
+  idHKelasActual Int @id @default(autoincrement())
+  idKelas Int
+  idGuru Int
+  avgNilaiKelas Int?
+  tahunAjaran String? @db.VarChar(10)
+  statusHKelasActual Int @default(1)
+  kelas kelas @relation(fields: [idKelas],references: [idKelas])
+  guru guru @relation(fields: [idGuru],references: [idGuru])
+  dKelasActual dKelasActual[]
+}
+
+model dKelasActual {
+  idDKelasActual Int @id @default(autoincrement())
+  idHKelasActual Int
+  idSiswa Int
+  totalNilai Int?
+  hKelasActual hKelasActual @relation(fields: [idHKelasActual],references: [idHKelasActual])
+  siswa siswa @relation(fields: [idSiswa],references: [idSiswa])
+  nilaiMatPel nilaiMatPel[]  
+}
+
+model nilaiMatPel {  
+  idNilai Int @id @default(autoincrement())
+  idMataPelajaran Int
+  idDKelasActual Int  
+  nilai Int?
+  mataPelajaran mataPelajaran @relation(fields: [idMataPelajaran],references: [idMataPelajaran])
+  dKelasActual dKelasActual @relation(fields: [idDKelasActual],references: [idDKelasActual])  
+}

@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "swiper/css/bundle";
+@import "../styles/Swiper.module.css";
+
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ae2a2627 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ae2a26dc !important;
+}
+/* end scrollbar */
+
+/* bg - image */
+.bg-quote{
+  background-image: url('../public/assets/images/bg-quote.png');
+}
+.bg-cover-book{
+  background-image: url('../public/assets/images/bg-cover.png');
+}
+.bg-cover-book-big{
+  background-image: url('../public/assets/images/bg-cover-big.png');
+}
+.bg-hen{
+  background-image: url('../public/assets/images/bg-hen.svg');
+}
+/* end bg - image */
+
+/* border */
+.border-1{
+  border-width: 1px;
+}
+.border-b-1{
+  border-bottom-width: 1px;
+}
+.border-r-1{
+  border-right-width: 1px;
+}
+.border-l-1{
+  border-left-width: 1px;
+}
+.border-t-1{
+  border-top-width: 1px;
+}
+/* end border */
+
+/* color */
+.bg-admin{
+  background-color: #F8F8F8;
+}
+.bg-primary-500{
+  background-color: #ae2a26a2;
+}
+.bg-primary-50{
+  background-color: #ae2a2609;
+}
+.bg-primary{
+  background-color: #AE2A26;
+}
+.bg-secondary{
+  background-color: #FFCF17;
+}
+.bg-custom{
+  background-color: #F8F8F8;
+}
+.color-primary{
+  color: #AE2A26;
+}
+.color-secondary{
+  color: #FFCF17;
+}
+.border-primary{
+  border-color: #AE2A26;
+}
+.border-secondary{
+  border-color: #FFCF17;
+}
+/* end color */
+
+/* hover */
+.group-hover\:bg-primary:hover{
+  background-color: #AE2A26;
+}
+.hover\:bg-primary:hover{
+  background-color: #AE2A26;
+}
+.group-hover\:border-primary:hover{
+  border-color: #AE2A26;
+}
+.hover\:border-primary:hover{
+  border-color: #AE2A26;
+}
+.group-hover\:border-secondary:hover{
+  border-color: #FFCF17;
+}
+.group-hover\:bg-secondary:hover{
+  background-color: #FFCF17;
+}
+.hover\:border-secondary:hover{
+  border-color: #FFCF17;
+}
+.hover\:bg-secondary:hover{
+  background-color: #FFCF17;
+}
+.hover\:color-primary:hover{
+  color: #AE2A26;
+}
+.group-hover\:color-primary:hover{
+  color: #AE2A26;
+}
+.group-hover\:color-secondary:hover{
+  color: #FFCF17;
+}
+.hover\:color-secondary:hover{
+  color: #FFCF17;
+}
+.hover\:bg-primary-50:hover{
+  background-color: #ae2a2609;
+}
+.hover\:bg-primary-100:hover{
+  background-color: #ae2a2611;
+}
+.hover\:bg-primary-600:hover{
+  background-color: #ae2a26c0;
+}
+.hover\:border-b-primary:hover{
+  border-bottom-color: #AE2A26;
+}
+.hover\:border-1:hover{
+  border-width: 1px;
+}
+/* end hover */
+
+/* focus */
+.focus\:border-primary:focus{
+  border-color: #AE2A26;
+}
+.focus\:border-b-primary:focus{
+  border-bottom-color: #AE2A26;
+}
+.focus\:color-primary:focus{
+  color: #AE2A26;
+}
+.focus\:bg-primary-50:focus{
+  background-color: #ae2a2609;
+}
+.focus\:bg-secondary:focus{
+  background-color: #FFCF17;
+}
+.focus\:border-1:focus{
+  border-width: 1px;
+}
+/* end focus */
+
+/* selection */
+.selection\:color-white::selection {
+  color: #FFF;
+}
+.selection\:bg-secondary::selection{
+  background-color: #FFCF17;
+}
+.selection\:bg-primary::selection{
+  background-color: #AE2A26;
+}
+/* end selection */
+
+/* active */
+.active\:bg-primary-500{
+  background-color: #ae2a26a2;
+}
+/* end active */
+
+/* animation */
+.middle {
+  position: relative;
+  transition: 0.2s;
+}
+
+.middle::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #AE2A26;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.middle:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.middle-secondary {
+  position: relative;
+  transition: 0.2s;
+}
+
+.middle-secondary::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #FFF;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.middle-secondary:hover::after {
+  width: 100%;
+  left: 0;
+}
+/* end animation */
+
+/* responsive */
+.text-custom{
+  font-size: 1.1rem;
+  line-height: 1.50rem;
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:text-custom {
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+  }
+  .\32xl\:bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: #AE2A26;
+  }
+  .\32xl\:bg-secondary {
+    --tw-bg-opacity: 1;
+    background-color: #FFCF17;
+  }
+}
+/* end responsive */
